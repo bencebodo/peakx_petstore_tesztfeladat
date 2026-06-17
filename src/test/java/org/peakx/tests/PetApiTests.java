@@ -9,9 +9,9 @@ import org.peakx.tests.base.BaseTest;
 import org.peakx.tests.support.PetDataBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("regression")
+@Tag("api")
 @Feature("Pet Store - Pet endpoint CRUD operations test")
 public class PetApiTests extends BaseTest {
 
@@ -74,6 +74,9 @@ public class PetApiTests extends BaseTest {
         );
 
         logger.info("Verifying deletion by expecting a 404 Not Found response...");
-        petService.getPet(requestPet.getId(), 404);
+        Allure.step("Verifying deletion by expecting a 404 Not Found response", () ->{
+                    logger.info("Executing BL: Verifying deletion by expecting a 404 Not Found response...");
+                    petService.getPet(requestPet.getId(), 404);
+                });
     }
 }

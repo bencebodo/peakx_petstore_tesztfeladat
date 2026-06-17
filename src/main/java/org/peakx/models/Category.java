@@ -3,6 +3,7 @@ package org.peakx.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@SuppressWarnings("unused")
 public class Category {
     private Long id;
     private String name;

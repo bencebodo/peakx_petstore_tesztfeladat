@@ -21,8 +21,8 @@ public class PetService {
 
     public Pet createPet(Pet pet, int expectedStatusCode) {
         logger.info("Attempting to create pet (ID: {})", pet.getId());
-        Response response = client.postPet(pet);
 
+        Response response = client.postPet(pet);
         response.then().assertThat().statusCode(expectedStatusCode);
 
         return response.as(Pet.class);
@@ -32,7 +32,6 @@ public class PetService {
         logger.info("Fetching pet details (ID: {})", petId);
 
         Response response = client.getPet(petId);
-
         response.then().assertThat().statusCode(expectedStatusCode);
 
         if (expectedStatusCode == 200) {
@@ -44,8 +43,8 @@ public class PetService {
 
     public Pet updatePet(Pet pet, int expectedStatusCode) {
         logger.info("Updating pet information (ID: {})", pet.getId());
-        Response response = client.updatePet(pet);
 
+        Response response = client.updatePet(pet);
         response.then().assertThat().statusCode(expectedStatusCode);
 
         return response.as(Pet.class);

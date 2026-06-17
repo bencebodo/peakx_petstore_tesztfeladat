@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 public class PetDataBuilder {
 
     private static final Logger logger = LoggerFactory.getLogger(PetDataBuilder.class);
-
     private static final Faker faker = new Faker();
 
     private PetDataBuilder() {}

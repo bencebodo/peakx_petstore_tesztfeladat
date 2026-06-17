@@ -16,10 +16,12 @@ public class PetStoreClient {
 
     private static final Logger logger = LoggerFactory.getLogger(PetStoreClient.class);
 
-    @Value("${petstore.base-url}")
-    private String baseUrl;
-
+    private final String baseUrl;
     private final String petEndpoint = "/pet";
+
+    public PetStoreClient(@Value("${petstore.base-url}") String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 
     private RequestSpecification getBaseSpec() {
         return RestAssured.given()
@@ -38,7 +40,7 @@ public class PetStoreClient {
     public Response getPet(Long petId) {
         logger.debug("Sending GET request to endpoint: {}/{}", petEndpoint, petId);
 
-        return getBaseSpec().pathParam("petId", petId).when().when().get(petEndpoint + "/{petId}").then().extract().response();
+        return getBaseSpec().pathParam("petId", petId).when().get(petEndpoint + "/{petId}").then().extract().response();
     }
 
     public Response updatePet(Pet pet) {
