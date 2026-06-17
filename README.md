@@ -19,6 +19,16 @@ An End-to-End API test automation framework built for the Swagger Petstore API. 
 * **Advanced Assertions:** Utilizing AssertJ's `usingRecursiveComparison()` for deep, object-level validation rather than repetitive field-by-field assertions.
 * **Structured Logging:** Implemented a clear Separation of Concerns in logging (INFO for Business Logic/Service layer, DEBUG for HTTP Client/Network layer).
 
+## CI/CD Pipeline (GitHub Actions)
+
+This project is fully integrated with **GitHub Actions**. Every code push automatically triggers the CI pipeline in the cloud, which performs the following steps:
+1. Provisions a clean Ubuntu environment and sets up **Java 21**.
+2. Executes the complete API test suite seamlessly via Maven.
+3. Generates the **Allure HTML Report** and uploads it as a downloadable Artifact.
+
+**How to view the cloud reports:**
+Navigate to the **Actions** tab in this repository, select the latest workflow run, and download the `allure-html-report` zip file from the Artifacts section at the bottom of the page.
+
 ## How to Run
 
 ### Prerequisites
