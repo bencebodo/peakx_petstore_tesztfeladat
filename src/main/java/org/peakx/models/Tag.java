@@ -1,17 +1,20 @@
 package org.peakx.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tag {
-    private long id;
+    private Long id;
     private String name;
 
     public Tag(){}
 
-    public Tag(long id, String name) {
+    public Tag(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -19,7 +22,7 @@ public class Tag {
         return name;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setName(String name) {

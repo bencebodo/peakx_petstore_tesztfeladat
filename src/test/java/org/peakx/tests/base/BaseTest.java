@@ -25,7 +25,6 @@ public abstract class BaseTest {
     @BeforeEach
     public void setup(TestInfo testInfo) {
         faker = new Faker();
-        logger.info("=======================================================");
         logger.info("Starting test: {}", testInfo.getDisplayName());
     }
 }

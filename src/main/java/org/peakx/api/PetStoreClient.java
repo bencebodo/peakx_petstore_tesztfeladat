@@ -6,11 +6,15 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.peakx.models.Pet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PetStoreClient {
+
+    private static final Logger logger = LoggerFactory.getLogger(PetStoreClient.class);
 
     @Value("${petstore.base-url}")
     private String baseUrl;
@@ -26,18 +30,26 @@ public class PetStoreClient {
     }
 
     public Response postPet(Pet pet) {
+        logger.debug("Sending POST request to endpoint: {} with payload ID: {}", petEndpoint, pet.getId());
+
         return getBaseSpec().body(pet).when().post(petEndpoint).then().extract().response();
     }
 
     public Response getPet(Long petId) {
+        logger.debug("Sending GET request to endpoint: {}/{}", petEndpoint, petId);
+
         return getBaseSpec().pathParam("petId", petId).when().when().get(petEndpoint + "/{petId}").then().extract().response();
     }
 
     public Response updatePet(Pet pet) {
+        logger.debug("Sending PUT request to endpoint: {} with updated payload ID: {}", petEndpoint, pet.getId());
+
         return getBaseSpec().body(pet).when().put(petEndpoint).then().extract().response();
     }
 
     public Response deletePet(Long petId) {
+        logger.debug("Sending DELETE request to endpoint: {}/{}", petEndpoint, petId);
+
         return getBaseSpec().pathParam("petId", petId).when().delete(petEndpoint + "/{petId}").then().extract().response();
     }
 }

@@ -1,7 +1,10 @@
 package org.peakx.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Pet {
-    private long id;
+    private Long id;
     private Category category;
     private String name;
     private String[] photoUrls;
@@ -10,7 +13,7 @@ public class Pet {
 
     public Pet() {}
 
-    public Pet(long id, Category category, String name, String[] photoUrls, Tag[] tags, PetStatus status) {
+    public Pet(Long id, Category category, String name, String[] photoUrls, Tag[] tags, PetStatus status) {
         this.id = id;
         this.category = category;
         this.name = name;
@@ -19,7 +22,7 @@ public class Pet {
         this.status = status;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public Category getCategory() {
@@ -38,7 +41,7 @@ public class Pet {
         return status;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setCategory(Category category) {
